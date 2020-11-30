@@ -8,8 +8,9 @@ module.exports = {
         main: path.resolve(__dirname, './src/index.js'),
     },
     devServer: {
-        contentBase: path.join(__dirname, 'public'),
-        writeToDisk: true,
+        contentBase: path.join(__dirname, 'dist'),
+        publicPath: '/dist',
+        writeToDisk: false,
         compress: true,
         port: 8000,
         open: true
@@ -17,7 +18,6 @@ module.exports = {
     output: {
         filename: '[name].[contenthash].bundle.js',
         path: path.resolve(__dirname, 'dist'),
-        publicPath: './',
     },
     resolve: {
         extensions: ['*', '.js', '.jsx'],
@@ -71,7 +71,6 @@ module.exports = {
             template: './public/index.html',
             filename: './index.html',
             favicon: './public/favicon.ico',
-            manifest: './public/manifest.json'
         }),
         new CleanWebpackPlugin(),
     ]
