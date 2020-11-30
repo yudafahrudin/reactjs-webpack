@@ -9,11 +9,15 @@ module.exports = {
     },
     devServer: {
         contentBase: path.join(__dirname, 'dist'),
-        publicPath: '/dist',
-        writeToDisk: false,
+        publicPath: '/',
+        writeToDisk: true,
         compress: true,
-        port: 8000,
-        open: true
+        port: 8080,
+        open: true,
+        proxy: [{
+            context: ['/auth', '/api'],
+            target: 'http://localhost:4000',
+        }]
     },
     output: {
         filename: '[name].[contenthash].bundle.js',
